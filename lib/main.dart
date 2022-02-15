@@ -44,20 +44,43 @@ class _QuoteAppState extends State<QuoteApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20,0,20,0),
-              child: Text(quotes[_index % quotes.length]),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-            ),
-            TextButton.icon(
-              onPressed: (){
-                setState(() {
-                  _index +=1;
-                });
-              }, 
-              icon: Icon(Icons.wb_sunny, color: Colors.purple,), label: Text('Inspire Me !', style: TextStyle(color: Colors.purple),))
+              Container(
+                width: 350,
+                height: 200,
+                margin: EdgeInsets.all(30.0),
+                decoration: BoxDecoration(
+                  color: Colors.purple[50],
+                  borderRadius: BorderRadius.circular(14)
+                ), 
+                child:  
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(quotes[_index % quotes.length], 
+                    style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic
+                    ),
+                    ),
+                  )
+                ),
+              ),
+              Divider(thickness: 1.3,),
+              TextButton.icon(
+                style: ButtonStyle(
+                  
+                  overlayColor: MaterialStateProperty.all(Colors.purple[100]),
+                  backgroundColor: MaterialStateProperty.all(Colors.purple[50]),
+                ),
+                onPressed: (){
+                  setState(() {
+                    _index +=1;
+                  });
+                }, 
+                icon: Icon(Icons.wb_sunny, color: Colors.purple,), 
+                label: Text('Inspire Me !', 
+                  style: TextStyle(color: Colors.purple, fontSize: 18),
+                )
+              ),
+              Spacer()
             ],
           )
         ),
